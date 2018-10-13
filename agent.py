@@ -16,11 +16,8 @@ class Agent():
         # Set subgoal testing ratio each layer will use
         self.subgoal_test_perc = agent_params["subgoal_test_perc"]
 
-        # Create agent with number of levels specified by user
-        # if FLAGS.retrain:
-        self.layers = [Layer(i,FLAGS,env,self.sess,agent_params) for i in range(FLAGS.layers)]
-        # else:
-            # self.layers = cpickle.load(open("saved_layers.p","rb"))
+        # Create agent with number of levels specified by user       
+        self.layers = [Layer(i,FLAGS,env,self.sess,agent_params) for i in range(FLAGS.layers)]        
 
         # Below attributes will be used help save network parameters
         self.saver = None
@@ -38,9 +35,10 @@ class Agent():
         # Track number of low-level actions executed
         self.steps_taken = 0
 
+        # Below hyperparameter specifies number of Q-value updates made after each episode
         self.num_updates = 40
 
-        # Below parameters will be used to store performance
+        # Below parameters will be used to store performance results
         self.performance_log = []
 
         self.other_params = agent_params
@@ -133,7 +131,7 @@ class Agent():
     # Train agent for an episode
     def train(self,env, episode_num):
 
-        # Select final goal from final goal space, defined in "design_env.py" or "environment.py"
+        # Select final goal from final goal space, defined in "design_agent_and_env.py" 
         self.goal_array[self.FLAGS.layers - 1] = env.get_next_goal(self.FLAGS.test)
         print("Next End Goal: ", self.goal_array[self.FLAGS.layers - 1])
 
