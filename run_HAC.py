@@ -37,6 +37,8 @@ def run_HAC(FLAGS,env,agent):
         for episode in range(num_episodes):
             
             print("\nBatch %d, Episode %d" % (batch, episode))
+            
+            # Train for an episode
             success = agent.train(env, episode)
 
             if success:
