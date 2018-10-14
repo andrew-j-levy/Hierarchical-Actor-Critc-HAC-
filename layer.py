@@ -318,10 +318,11 @@ class Layer():
             # Select action to achieve goal state using epsilon-greedy policy or greedy policy if in test mode
             action, action_type, next_subgoal_test = self.choose_action(agent, env, subgoal_test)
 
+            """
             if self.layer_number == agent.FLAGS.layers - 1:
                 # print("\nLayer %d Action: " % self.layer_number, action)
                 print("Q-Value: ", self.critic.get_Q_value(np.reshape(self.current_state,(1,len(self.current_state))), np.reshape(self.goal,(1,len(self.goal))), np.reshape(action,(1,len(action)))))
-
+            """
 
             # If next layer is not bottom level, propose subgoal for next layer to achieve and determine whether that subgoal should be tested
             if self.layer_number > 0:
