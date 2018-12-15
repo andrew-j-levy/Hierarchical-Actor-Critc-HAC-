@@ -225,33 +225,33 @@ class Layer():
             # print("Selected Indices: ", indices)
 
         # For each selected transition, update the goal dimension of the selected transition and all prior transitions by using the next state of the selected transition as the new goal.  Given new goal, update the reward and finished boolean as well.
-        for i in range(len(indices)):
-            trans_copy = np.copy(self.temp_goal_replay_storage)
+        for idx in indices:
+            trans_copy = np.copy(self.temp_goal_replay_storage[:idx+1])
 
             # if self.layer_number == 1:
                 # print("GR Iteration: %d, Index %d" % (i, indices[i]))
 
-            new_goal = trans_copy[int(indices[i])][6]
+            new_goal = trans_copy[idx][6]
             # for index in range(int(indices[i])+1):
-            for index in range(num_trans):
+            for transition in trans_copy:
                 # Update goal to new goal
-                trans_copy[index][4] = new_goal
+                transition[4] = new_goal
 
                 # Update reward
-                trans_copy[index][2] = self.get_reward(new_goal, trans_copy[index][6], goal_thresholds)
+                transition[2] = self.get_reward(new_goal, transition[6], goal_thresholds)
 
                 # Update finished boolean based on reward
-                if trans_copy[index][2] == 0:
-                    trans_copy[index][5] = True
+                if transition[2] == 0:
+                    transition[5] = True
                 else:
-                    trans_copy[index][5] = False
+                    transition[5] = False
 
                 # Add finished transition to replay buffer
                 # if self.layer_number == 1:
                     # print("\nNew Goal: ", new_goal)
-                    # print("Upd Trans %d: " % index, trans_copy[index])
+                    # print("Upd Trans %d: " % index, transition)
 
-                self.replay_buffer.add(trans_copy[index])
+                self.replay_buffer.add(transition)
 
 
         # Clear storage for preliminary goal replay transitions at end of goal replay
