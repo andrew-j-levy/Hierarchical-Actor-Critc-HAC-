@@ -3,6 +3,7 @@ from experience_buffer import ExperienceBuffer
 from actor import Actor
 from critic import Critic
 from time import sleep
+from environment import Environment 
 
 class Layer():
     def __init__(self, layer_number, FLAGS, env, sess, agent_params):
@@ -200,7 +201,7 @@ class Layer():
 
 
     # Finalize goal replay by filling in goal, reward, and finished boolean for the preliminary goal replay transitions created before
-    def finalize_goal_replay(self,goal_thresholds):
+    def finalize_goal_replay(self,env,goal_thresholds):
 
         # Choose transitions to serve as goals during goal replay.  The last transition will always be used
         num_trans = len(self.temp_goal_replay_storage)
@@ -238,7 +239,7 @@ class Layer():
                 trans_copy[index][4] = new_goal
 
                 # Update reward
-                trans_copy[index][2] = self.get_reward(new_goal, trans_copy[index][6], goal_thresholds)
+                trans_copy[index][2] = env.get_reward(new_goal, trans_copy[index][6], goal_thresholds)
 
                 # Update finished boolean based on reward
                 if trans_copy[index][2] == 0:
