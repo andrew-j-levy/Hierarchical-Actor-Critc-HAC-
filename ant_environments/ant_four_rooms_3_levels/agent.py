@@ -2,7 +2,8 @@ import numpy as np
 from layer import Layer
 from environment import Environment
 import pickle as cpickle
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import os
 import pickle as cpickle
 
