@@ -1,4 +1,5 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 def layer(input_layer, num_next_neurons, is_output=False):
     num_prev_neurons = int(input_layer.shape[1])
