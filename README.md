@@ -9,6 +9,12 @@ Happy to answer any questions you have.  Please email me at andrew_levy2@brown.e
 
 ## UPDATE LOG
 
+### 2/25/2019 - Key Changes
+
+1. TensorFlow 2.x Compatible
+
+2. Fine-tuned exploration parameters of the 3 Levels Ant Reacher environment
+
 ### 10/1/2019 - Key Changes
 
 1.  Added Ant Reacher and Ant Four Rooms Environments
