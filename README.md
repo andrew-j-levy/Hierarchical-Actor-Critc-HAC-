@@ -13,7 +13,7 @@ Happy to answer any questions you have.  Please email me at andrew_levy2@brown.e
 
 1. TensorFlow 2.x Compatible
 
-2. Fine-tuned exploration parameters of the 3 Levels Ant Reacher environment
+2. Fine-tuned exploration parameters of the Ant Reacher environment
 
 ### 10/1/2019 - Key Changes
 
