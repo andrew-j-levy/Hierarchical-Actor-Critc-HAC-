@@ -128,8 +128,8 @@ def design_agent_and_env(FLAGS):
     agent_params["subgoal_penalty"] = -FLAGS.time_scale
 
     # Define exploration noise that is added to both subgoal actions and atomic actions.  Noise added is Gaussian N(0, noise_percentage * action_dim_range)
-    agent_params["atomic_noise"] = [0.1 for i in range(8)]
-    agent_params["subgoal_noise"] = [0.1 for i in range(len(subgoal_thresholds))]
+    agent_params["atomic_noise"] = [0.2 for i in range(8)]
+    agent_params["subgoal_noise"] = [0.2 for i in range(len(subgoal_thresholds))]
 
     # Define number of episodes of transitions to be stored by each level of the hierarchy
     agent_params["episodes_to_store"] = 500
