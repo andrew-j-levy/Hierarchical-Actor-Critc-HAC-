@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/andrewlevy/Documents/GitHub/Hierarchical-Actor-Critc-HAC-/ant_environments/ant_reacher_2_levels/models/HAC.ckpt-99"
+all_model_checkpoint_paths: "/Users/andrewlevy/Documents/GitHub/Hierarchical-Actor-Critc-HAC-/ant_environments/ant_reacher_2_levels/models/HAC.ckpt-99"

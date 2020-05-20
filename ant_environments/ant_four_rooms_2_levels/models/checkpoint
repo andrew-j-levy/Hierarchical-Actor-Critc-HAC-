@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/tester/Documents/HAC/extra_copy/Hierarchical-Actor-Critc-HAC-/ant_environments/ant_four_rooms_2_levels_2/models/HAC.ckpt-99"
+all_model_checkpoint_paths: "/home/tester/Documents/HAC/extra_copy/Hierarchical-Actor-Critc-HAC-/ant_environments/ant_four_rooms_2_levels_2/models/HAC.ckpt-99"

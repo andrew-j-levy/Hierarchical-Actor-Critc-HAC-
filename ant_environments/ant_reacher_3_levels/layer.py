@@ -115,7 +115,7 @@ class Layer():
 
         else:
 
-            if np.random.random_sample() > 0.3:
+            if np.random.random_sample() > agent.other_params["random_action_perc"]:
                 # Choose noisy action
                 action = self.add_noise(self.actor.get_action(np.reshape(self.current_state,(1,len(self.current_state))), np.reshape(self.goal,(1,len(self.goal))))[0],env)
 

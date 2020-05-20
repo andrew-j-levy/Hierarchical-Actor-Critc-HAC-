@@ -127,9 +127,22 @@ def design_agent_and_env(FLAGS):
     # Define subgoal penalty for missing subgoal.  Please note that by default the Q value target for missed subgoals does not include Q-value of next state (i.e, discount rate = 0).  As a result, the Q-value target for missed subgoal just equals penalty.  For instance in this 3-level UR5 implementation, if a level proposes a subgoal and misses it, the Q target value for this action would be -10.  To incorporate the next state in the penalty, go to the "penalize_subgoal" method in the "layer.py" file.
     agent_params["subgoal_penalty"] = -FLAGS.time_scale
 
+    # Set exploration hyperparameters
+
+    # Set percentage of non-subgoal testing time, agents will take random actions (sampled uniformly from action space)
+    agent_params["random_action_perc"] = 0.3
+
     # Define exploration noise that is added to both subgoal actions and atomic actions.  Noise added is Gaussian N(0, noise_percentage * action_dim_range)
     agent_params["atomic_noise"] = [0.2 for i in range(8)]
     agent_params["subgoal_noise"] = [0.2 for i in range(len(subgoal_thresholds))]
+
+    """
+    Set number of pre-learning episodes (i.e., number of initial episodes before any updates are made to actor and critic functions).
+
+    We noticed that this buffer period was helpful for ensuring the policy chose actions that could be achieved within $H$ actions.
+    This is likely because the agent is able to gather some subgoal penalty transitions.
+    """
+    agent_params["num_pre_training_episodes"] = 25
 
     # Define number of episodes of transitions to be stored by each level of the hierarchy
     agent_params["episodes_to_store"] = 500
