@@ -9,7 +9,12 @@ Happy to answer any questions you have.  Please email me at andrew_levy2@brown.e
 
 ## UPDATE LOG
 
-### 2/25/2019 - Key Changes
+### 5/20/2020 - Key Changes
+
+1. Added 2-level ant environments
+2. Centralized exploration hyperparameters for ant environments in *design_agent_and_env.py* file
+
+### 2/25/2020 - Key Changes
 
 1. TensorFlow 2.x Compatible
 
